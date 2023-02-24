@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: SNOWAPP
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: argocd
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: application
+    repoURL: "https://github.com/meera-gajawada/argocd-sample.git"
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
